@@ -5,9 +5,10 @@ Dependencias usadas en Frontend
 react	Librería principal para construir interfaces de usuario.
 react-dom	Permite que React se conecte al DOM.
 axios	Cliente HTTP para hacer solicitudes al backend.
+framer-motion Es el que le da movimiento cuando pasamos del la pantalla principal al login/registro
 
 comando de instalación
-npm install axios
+npm install axios react-router-dom framer-motion
 
 Dependencias usadas en Backend
 express	Framework web para crear el servidor.

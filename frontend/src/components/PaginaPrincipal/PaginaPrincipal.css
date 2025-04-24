@@ -1,0 +1,13 @@
+.TituloPagMain {
+    display: flex;
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;           
+    text-align: center;       
+}
+
+.Leon {
+    width: 50%;
+    height: 90%;
+}

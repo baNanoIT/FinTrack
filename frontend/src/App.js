@@ -1,13 +1,24 @@
-import React from 'react';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import RouterWrapper from './RouterWrapper';
 import './App.css';
-import RegistroUsuario from './components/RegistroUsuario';
+
+function AppContent() {
+  const location = useLocation();
+  const [rutaAnterior, setRutaAnterior] = useState(null);
+
+  useEffect(() =>{
+    setRutaAnterior(location.pathname);
+  },[location]);
+
+  return <RouterWrapper rutaAnterior={rutaAnterior} />
+}
 
 function App() {
   return (
-    <div className="App">
-      <center><h1>FinTrack - Gestión de Finanzas Personales</h1></center>
-      <RegistroUsuario />
-    </div>
+    <Router>
+      <AppContent/>
+    </Router>
   );
 }
 
