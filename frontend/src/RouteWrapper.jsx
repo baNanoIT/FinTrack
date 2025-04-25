@@ -5,18 +5,20 @@ function RouteWrapper({ children, rutaAnterior }) {
   const location = useLocation();
 
   const animacion = (() => {
-    if (rutaAnterior === '/Login' && location.pathname === '/SignUp') {
+
+    if (rutaAnterior === '/' && location.pathname === '/Login') {
       return {
         initial: { y: '100%', opacity: 0 },
         animate: { y: 0, opacity: 1 },
         exit: { y: '-100%', opacity: 0 },
       };
-    } else if (rutaAnterior === '/SignUp' && location.pathname === '/Login') {
+    } else if (rutaAnterior === '/Login' && location.pathname === '/') {
       return {
         initial: { y: '-100%', opacity: 0 },
         animate: { y: 0, opacity: 1 },
-        exit: { y: '100%', opacity: 0 },
+        exit: { y: '-100%', opacity: 0 },
       };
+
     } else {
       return {
         initial: { opacity: 0 },

@@ -5,6 +5,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import PaginaPrincipal from "./components/PaginaPrincipal/PaginaPricipal";
 import InicioSesion from "./components/InicioSesion/InicioSesion";
 import RegistroUsuario from "./components/RegistroUsuario";
+import Inicio from "./components/Inicio/Inicio";
+import RouteWrapper from "./RouteWrapper";
+
 
 const RouterWrapper = () => {
     const location = useLocation();
@@ -18,19 +21,21 @@ const RouterWrapper = () => {
 
     return (
         <AnimatePresence mode="wait">
+            
             <Routes location={location} key={location.pathname}>
                 <Route 
                     path="/" 
-                    element={<PaginaPrincipal rutaAnterior={rutaAnterior} />} 
+                    element={   
+                        <RouteWrapper> 
+                            <PaginaPrincipal rutaAnterior={rutaAnterior}/>
+                        </RouteWrapper>
+                    } 
                 />
-                <Route 
-                    path="/Login" 
-                    element={<InicioSesion rutaAnterior={rutaAnterior} />} 
-                />
-                <Route 
-                    path="/SignUp" 
-                    element={<RegistroUsuario rutaAnterior={rutaAnterior} />} 
-                />
+                
+                <Route path="/Login" element={ <RouteWrapper> <InicioSesion rutaAnterior={rutaAnterior}/> </RouteWrapper> } />
+                <Route path="/SignUp" element={ <RouteWrapper> <RegistroUsuario rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>
+                <Route path="/Home" element={ <RouteWrapper> <Inicio rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>
+
             </Routes>
         </AnimatePresence>
     );

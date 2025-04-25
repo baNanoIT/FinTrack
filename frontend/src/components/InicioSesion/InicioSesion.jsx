@@ -1,20 +1,22 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock, FaAngleLeft } from 'react-icons/fa';
 import auditoriaLogin from '../../assets/AuditoriaFinancieraLogin.jpg';
 import { motion } from "framer-motion";
 import './InicioSesion.css';
 
-import RegistroUsuario from '../RegistroUsuario';
-
 const InicioSesion = () => {
+
+const navigate = useNavigate();
+
+const manejadorInicioSesion = (e) => {
+    e.preventDefault();
+    // Aquí iría la lógica de validación
+    navigate('/Home'); 
+  };
+
   return (
-    <motion.div
-      initial={{ x: '50vh', opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+
 
       <div className="container">
         
@@ -24,16 +26,21 @@ const InicioSesion = () => {
           </div>
         </div>
 
-        <div className="right-panel">
-          <Link to="/" className="boton-clase"> Regresar </Link>
+        <div className="right-panel">  
+        <div className="right-panel-titulo">  
 
-          <h1>FinTrack</h1>
+          <div className="titulo-header">  
+            <Link to="/" className="boton-clase"> <FaAngleLeft/></Link>
+            <h1>FinTrack</h1>
+          </div>
           <a> Aprende, ahorra y crece</a>
-          
-          <h2>¡Bienvenido de nuevo!</h2>
+        </div>
 
           <form className="form">
-            
+            <div className='bienvenido'>
+              <h2>¡Bienvenido de nuevo!</h2>  
+            </div>
+          
             <div className="input-group">
               <FaEnvelope className="icon" />
               <input type="email" placeholder="Correo electrónico" />
@@ -49,7 +56,9 @@ const InicioSesion = () => {
               <label htmlFor="remember">Recordar contraseña</label>
             </div>
 
-            <button type="submit" className="login-button">Iniciar sesión</button>
+            <button type="submit" className="login-button" onClick={manejadorInicioSesion}> 
+              Iniciar sesión
+            </button>
 
             <div className="links">
               <Link to="/SignUp">¿Todavía no tienes una cuenta? Regístrate</Link><br/>
@@ -59,8 +68,7 @@ const InicioSesion = () => {
           </form>
         </div>
 
-      </div>
-    </motion.div>    
+      </div>    
   );
 };
 
