@@ -37,17 +37,62 @@ const RecuperarContraseñaModal = ({ onClose, onOpenIniciarSesion }) => {
                 }}
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* Sección de la imagen */}
-                <div style={{
-                    flex: 1,
-                    backgroundImage: 'url("https://static.vecteezy.com/system/resources/thumbnails/028/385/797/small_2x/an-illustration-of-a-man-looking-at-a-star-in-the-night-sky-generative-ai-photo.jpeg")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    minHeight: '200px',
-                    borderTopLeftRadius: '10px',
-                    borderBottomLeftRadius: '10px'
-                }}>
-                </div>
+                <div
+          style={{
+            position: "relative", // clave para limitar los hijos posicionados
+            flex: 1,
+            backgroundColor: "#fdfd96",
+            minHeight: "200px",
+            borderTopLeftRadius: "10px",
+            borderBottomLeftRadius: "10px",
+            overflow: "hidden", // evita que los hijos se escapen
+            maxWidth: "100%", // evita que el contenedor crezca más que la ventana
+          }}
+        >
+          {/* Logotipo */}
+          <img
+            src="./Fintrack-Logo-Azul.png"
+            alt="Logotipo Fintrack"
+            style={{
+              position: "absolute",
+              top: "2%",
+              left: "2%",
+              width: "5vw",
+              maxWidth: "125px",
+              height: "auto",
+            }}
+          />
+
+          {/* Texto FINTRACK */}
+          <div
+            style={{
+              position: "absolute",
+              top: "7%",
+              left: "40%",
+              fontSize: "30px",
+              fontWeight: "bold",
+              color: "#0097b2",
+              whiteSpace: "nowrap",
+            }}
+          >
+            FINTRACK
+          </div>
+
+          {/* Imagen inferior */}
+          <img
+            src="./FT-Foto1.png"
+            alt="Imagen de fondo"
+            style={{
+              position: "absolute",
+              top: "30%",
+              left: "5%",
+              width: "34vw",
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "cover",
+            }}
+          />
+        </div>
 
                 {/* Sección del formulario */}
                 <div style={{
@@ -56,7 +101,7 @@ const RecuperarContraseñaModal = ({ onClose, onOpenIniciarSesion }) => {
                     textAlign: 'center',
                     boxSizing: 'border-box'
                 }}>
-                    <h2 style={{ marginBottom: '20px', color: 'blue', fontWeight: 'bold' }}>Recuperar Contraseña</h2>
+                    <h2 style={{ marginBottom: '20px', color: '#004aad', fontWeight: 'bold' }}>RECUPERAR CONTRASEÑA</h2>
                     <img 
                         src="https://cdn-icons-png.flaticon.com/512/847/847969.png" 
                         alt="Recuperar Contraseña" 

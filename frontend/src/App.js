@@ -1,70 +1,14 @@
-/* import React from 'react';
-import './App.css';
-import Home from './components/Home';
-import { useState } from 'react';
-import InicioSesionModal from './components/InicioSesionModal';
-
-function Header() {
-  const [activeModal, setActiveModal] = useState(null);
-
-  const handleOpenModal = (modalName) => {
-    setActiveModal(modalName);
-  };
-
-  const closeModal = () => {
-    setActiveModal(null);
-  };
-
-  return (
-    <header className="App-header">
-      <img src="/logo.png" alt="FinTrack Logo" className="logo" />
-      <h1>FinTrack - Gestión de Finanzas Personales</h1>
-      <nav>
-        <ul className="nav-links">
-          <li><a href="#features">Funciones</a></li>
-          <li><a href="#contact">Contacto</a></li>
-        </ul>
-      </nav>
-      <button className="login-button" onClick={() => handleOpenModal('login')}>Iniciar Sesión</button>
-      {activeModal === 'login' && <InicioSesionModal onClose={closeModal} />}
-      {activeModal === 'signup' && <div className="signup-modal">Signup Modal Content</div>}
-    </header>
-  );
-}
-
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Home />
-    </div>
-  );
-}
-
-export default App;
- */
-
-// App.js
 import React, { useState } from 'react';
 import './App.css';
 import InicioSesionModal from './components/InicioSesionModal';
 import RegistroUsuarioModal from './components/RegistroUsuarioModal';
 import RecuperarContrasenaModal from './components/RecuperarContrasenaModal';
+import Home from './components/Home';
 
-function Header() {
-  const [activeModal, setActiveModal] = useState(null);
-
-  const openModal = (modalName) => {
-    setActiveModal(modalName);
-  };
-
-  const closeModal = () => {
-    setActiveModal(null);
-  };
-
+function Header({ onLoginClick }) {
   return (
     <header className="App-header">
-      <img src="/logo.png" alt="FinTrack Logo" className="logo" />
+      <img src="./Fintrack-Logo-Azul.png" alt="FinTrack Logo" className="logo" />
       <h1>FinTrack - Gestión de Finanzas Personales</h1>
       <nav>
         <ul className="nav-links">
@@ -72,8 +16,20 @@ function Header() {
           <li><a href="#contact">Contacto</a></li>
         </ul>
       </nav>
-      <button className="login-button" onClick={() => openModal('login')}>Iniciar Sesión</button>
+      <button className="login-button" onClick={() => onLoginClick('login')}>Iniciar Sesión</button>
+    </header>
+  );
+}
 
+function App() {
+  const [activeModal, setActiveModal] = useState(null); // puede ser 'login', 'register' o 'recover'
+
+  const openModal = (modalName) => setActiveModal(modalName);
+  const closeModal = () => setActiveModal(null);
+
+  return (
+    <div className="App-container">
+      {/* Render de modales FUERA del div borroso */}
       {activeModal === 'login' && (
         <InicioSesionModal
           isOpen={true}
@@ -98,15 +54,25 @@ function Header() {
           onOpenIniciarSesion={() => openModal('login')}
         />
       )}
-    </header>
-  );
-}
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      {/* Aquí podrías poner el contenido principal si deseas algo debajo del header */}
+      {/* Se aplica blur aquí */}
+      <div className={`App ${activeModal ? 'blurred' : ''}`}>
+        <Header onLoginClick={openModal} />
+        <main>
+          <section id="features">
+            <h2>Funciones</h2>
+            <p>Descripción de las funciones de la aplicación.</p>
+          </section>
+          <section id="contact">
+            <h2>Contacto</h2>
+            <p>Información de contacto.</p>
+          </section>
+          <Home />
+        </main>
+        <footer className="App-footer">
+          <p>&copy; 2023 FinTrack. Todos los derechos reservados.</p>
+        </footer>
+      </div>
     </div>
   );
 }
