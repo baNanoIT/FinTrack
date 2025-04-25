@@ -7,7 +7,16 @@
    - Primero inicia el backend
    - Luego inicia el frontend
 
-## Dependencias
+### Dependencias usadas en Backend
+express	Framework web para crear el servidor.
+mongoose	ODM para conectar y trabajar con MongoDB.
+cors	Middleware para habilitar solicitudes entre frontend y backend.
+dotenv	Permite cargar variables de entorno desde un archivo .env.
+nodemon (opcional)	Reinicia automáticamente el servidor al detectar cambios (modo desarrollo).
+
+**Comando de instalación:**
+```bash
+npm install express mongoose cors dotenv nodemon
 
 ### Frontend
 | Dependencia | Descripción |
