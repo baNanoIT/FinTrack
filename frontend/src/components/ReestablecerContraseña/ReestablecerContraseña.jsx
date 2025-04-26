@@ -1,66 +1,68 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaEnvelope, FaAngleLeft } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import './ReestablecerContraseña.css';
+import auditoriaLogin from '../../assets/AuditoriaFinancieraLogin.jpg';
+import './ReestablecerContraseña.css'; // (ahorita te explico qué poner aquí)
 
 const ReestablecerContraseña = () => {
-    return (
-        <motion.div
-              initial={{ x: '50vh', opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-        >
+  const navigate = useNavigate();
 
-        <div className="container">
-                
-                <div className="left-panel">  
-                  <div className="illustration">
-                    <img alt="LoginImg"/>  
-                  </div>
-                </div>
-        
-                <div className="right-panel">
-                  <Link to="/Login" className="boton-clase"> Regresar </Link>
-        
-                  <h1>FinTrack</h1>
-                  <a> Aprende, ahorra y crece</a>
-                  
-                  <h2>¡Bienvenido de nuevo!</h2>
-        
-                  <form className="form">
-                    
-                    <div className="input-group">
-                      <FaEnvelope className="icon" />
-                      <input type="email" placeholder="Correo electrónico" />
-                    </div>
-        
-                    <div className="input-group">
-                      <FaLock className="icon" />
-                      <input type="password" placeholder="Contraseña" />
-                    </div>
-        
-                    <div className="checkbox-group">
-                      <input type="checkbox" id="remember" />
-                      <label htmlFor="remember">Recordar contraseña</label>
-                    </div>
-        
-                    <button type="submit" className="login-button">Iniciar sesión</button>
-        
-                    <div className="links">
-                      <Link to="/SignUp">¿Todavía no tienes una cuenta? Regístrate</Link><br/>
-                      <Link to="/ResetPassword">¿Olvidó su contraseña?</Link><br/>
-                    </div>
-        
-                  </form>
-                </div>
-        
-              </div>
+  const manejadorRestablecer = (e) => {
+    e.preventDefault();
+    // Aquí iría la lógica para enviar correo de recuperación
+    navigate('/ConfirmacionEnvio');
+  };
 
-        </motion.div>
+  return (
+    <div className="container">
+      {/* Panel izquierdo con imagen */}
+      <motion.div 
+        className="left-panel" 
+        initial={{ opacity: 0, x: -100 }} 
+        animate={{ opacity: 1, x: 0 }} 
+        transition={{ duration: 0.5 }}
+      >
+        <div className="illustration">
+          <img src={auditoriaLogin} alt="Imagen Recuperar Contraseña" />
+        </div>
+      </motion.div>
 
-    );
-}
+      {/* Panel derecho con formulario */}
+      <motion.div 
+        className="right-panel" 
+        initial={{ opacity: 0, x: 100 }} 
+        animate={{ opacity: 1, x: 0 }} 
+        transition={{ duration: 0.5 }}
+      >
+        <div className="right-panel-titulo">
+          <div className="titulo-header">
+            <Link to="/Login" className="boton-clase">
+              <FaAngleLeft />
+            </Link>
+            <h1>FinTrack</h1>
+          </div>
+          <span>Recupera tu acceso fácilmente</span>
+        </div>
+
+        <form className="form">
+          <div className="bienvenido">
+            <h2>¿Olvidaste tu contraseña?</h2>
+            <p>Introduce tu correo electrónico para enviarte instrucciones.</p>
+          </div>
+
+          <div className="input-group">
+            <FaEnvelope className="icon" />
+            <input type="email" placeholder="Correo electrónico" required />
+          </div>
+
+          <button type="submit" className="login-button" onClick={manejadorRestablecer}>
+            Enviar instrucciones
+          </button>
+        </form>
+      </motion.div>
+    </div>
+  );
+};
 
 export default ReestablecerContraseña;
