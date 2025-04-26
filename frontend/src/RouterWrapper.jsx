@@ -31,7 +31,7 @@ const RouterWrapper = () => {
                         </RouteWrapper>
                     } 
                 />
-                
+                {/* Aqui modifique y agregue la ruta de registro de usuario */}
                 <Route path="/Login" element={ <RouteWrapper> <InicioSesion rutaAnterior={rutaAnterior}/> </RouteWrapper> } />
                 <Route path="/SignUp" element={ <RouteWrapper> <RegUsuario rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>
                 <Route path="/Home" element={ <RouteWrapper> <Inicio rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>

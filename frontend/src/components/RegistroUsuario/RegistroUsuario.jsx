@@ -5,6 +5,8 @@ import auditoriaLogin from "../../assets/AuditoriaFinancieraLogin.jpg";
 import "../RegistroUsuario/RegistroUsuario.css";
 import { useState } from "react";
 
+// Proceso para registrar un nuevo usuario
+// Se utiliza el hook useState para manejar el estado de los campos del formulario
 const RegistroUsuario = () => {
   const [nombres, setNombres] = useState("");
     const [apellido_paterno, setApellido_paterno] = useState("");
@@ -17,6 +19,7 @@ const RegistroUsuario = () => {
 const manejadorRegistro = async (e) => {
   e.preventDefault();
 
+  // 
   const userData = {
     nombres,
     apellido_paterno,

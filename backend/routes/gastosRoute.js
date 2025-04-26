@@ -1,3 +1,4 @@
+// Imnportar las dependencias necesarias
 const express = require('express');
 const router = express.Router();
 const gastoController = require('../controllers/gastosController');

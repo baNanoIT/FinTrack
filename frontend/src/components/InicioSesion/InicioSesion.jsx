@@ -61,6 +61,7 @@ const manejadorInicioSesion = (e) => {
             </button>
 
             <div className="links">
+              {/* Modifique para que ahora si redirija a la pagina de registro correcta */}
               <Link to="/SignUp">¿Todavía no tienes una cuenta? Regístrate</Link><br/>
               <Link to="/ResetPassword">¿Olvidó su contraseña?</Link><br/>
             </div>

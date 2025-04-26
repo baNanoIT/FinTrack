@@ -1,3 +1,4 @@
+/* Hola */
 .containerReg {
   display: flex;
   height: 100vh;
@@ -146,3 +147,11 @@ h1{
 }
 
 
+.Nada{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}

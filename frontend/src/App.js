@@ -1,7 +1,7 @@
-import './App.css';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import RouterWrapper from './RouterWrapper';
+import './App.css';
 
 function AppContent() {
   const location = useLocation();
