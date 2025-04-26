@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
 import './App.css';
 import InicioSesionModal from './components/InicioSesionModal';
 import RegistroUsuarioModal from './components/RegistroUsuarioModal';
 import RecuperarContrasenaModal from './components/RecuperarContrasenaModal';
-import Home from './components/Home';
+//import Home from './components/Home';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import RouterWrapper from './RouterWrapper';
+
 
 function Header({ onLoginClick }) {
   return (
@@ -18,7 +21,18 @@ function Header({ onLoginClick }) {
       </nav>
       <button className="login-button" onClick={() => onLoginClick('login')}>Iniciar Sesión</button>
     </header>
-  );
+    );
+  }
+
+function AppContent() {
+  const location = useLocation();
+  const [rutaAnterior, setRutaAnterior] = useState(null);
+
+  useEffect(() =>{
+    setRutaAnterior(location.pathname);
+  },[location]);
+
+  return <RouterWrapper rutaAnterior={rutaAnterior} />
 }
 
 function App() {
@@ -28,52 +42,46 @@ function App() {
   const closeModal = () => setActiveModal(null);
 
   return (
-    <div className="App-container">
-      {/* Render de modales FUERA del div borroso */}
-      {activeModal === 'login' && (
-        <InicioSesionModal
-          isOpen={true}
-          onClose={closeModal}
-          onOpenRegistro={() => openModal('register')}
-          onOpenRecuperarContrasena={() => openModal('recover')}
-        />
-      )}
+    <Router>
+      <div className="App-container">
+        {/* Render de modales FUERA del div borroso */}
+        {activeModal === 'login' && (
+          <InicioSesionModal
+            isOpen={true}
+            onClose={closeModal}
+            onOpenRegistro={() => openModal('register')}
+            onOpenRecuperarContrasena={() => openModal('recover')}
+          />
+        )}
 
-      {activeModal === 'register' && (
-        <RegistroUsuarioModal
-          isOpen={true}
-          onClose={closeModal}
-          onOpenIniciarSesion={() => openModal('login')}
-        />
-      )}
+        {activeModal === 'register' && (
+          <RegistroUsuarioModal
+            isOpen={true}
+            onClose={closeModal}
+            onOpenIniciarSesion={() => openModal('login')}
+          />
+        )}
 
-      {activeModal === 'recover' && (
-        <RecuperarContrasenaModal
-          isOpen={true}
-          onClose={closeModal}
-          onOpenIniciarSesion={() => openModal('login')}
-        />
-      )}
+        {activeModal === 'recover' && (
+          <RecuperarContrasenaModal
+            isOpen={true}
+            onClose={closeModal}
+            onOpenIniciarSesion={() => openModal('login')}
+          />
+        )}
 
-      {/* Se aplica blur aquí */}
-      <div className={`App ${activeModal ? 'blurred' : ''}`}>
-        <Header onLoginClick={openModal} />
-        <main>
-          <section id="features">
-            <h2>Funciones</h2>
-            <p>Descripción de las funciones de la aplicación.</p>
-          </section>
-          <section id="contact">
-            <h2>Contacto</h2>
-            <p>Información de contacto.</p>
-          </section>
-          <Home />
-        </main>
-        <footer className="App-footer">
-          <p>&copy; 2023 FinTrack. Todos los derechos reservados.</p>
-        </footer>
+        {/* Se aplica blur aquí */}
+        <div className={`App ${activeModal ? 'blurred' : ''}`}>
+          <Header onLoginClick={openModal} />
+          <main>
+            <AppContent />
+          </main>
+          <footer className="App-footer">
+            <p>&copy; 2023 FinTrack. Todos los derechos reservados.</p>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

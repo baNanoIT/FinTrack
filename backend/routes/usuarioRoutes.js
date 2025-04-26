@@ -22,6 +22,22 @@ router.post('/', usuarioController.crearUsuario);
 // Ruta para obtener todos los usuarios (ejemplo público)
 router.get('/', usuarioController.obtenerUsuarios);
 
+// Ruta para eliminar un usuario
+/* router.delete('/:id', verificarToken, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const usuario = await Usuario.findByIdAndDelete(id);
+    if (!usuario) {
+      return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+    }
+
+    res.json({ mensaje: 'Usuario eliminado exitosamente' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}); */
+
 // Ruta para login
 router.post('/login', async (req, res) => {
   const { email, contraseña } = req.body;
