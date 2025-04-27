@@ -4,7 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import PaginaPrincipal from "./components/PaginaPrincipal/PaginaPricipal";
 import InicioSesion from "./components/InicioSesion/InicioSesion";
-import RegistroUsuario from "./components/RegistroUsuario";
+import RegUsuario from "./components/RegistroUsuario/RegistroUsuario";
 import Inicio from "./components/Inicio/Inicio";
 import RouteWrapper from "./RouteWrapper";
 
@@ -31,9 +31,9 @@ const RouterWrapper = () => {
                         </RouteWrapper>
                     } 
                 />
-                
+                {/* Aqui modifique y agregue la ruta de registro de usuario */}
                 <Route path="/Login" element={ <RouteWrapper> <InicioSesion rutaAnterior={rutaAnterior}/> </RouteWrapper> } />
-                <Route path="/SignUp" element={ <RouteWrapper> <RegistroUsuario rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>
+                <Route path="/SignUp" element={ <RouteWrapper> <RegUsuario rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>
                 <Route path="/Home" element={ <RouteWrapper> <Inicio rutaAnterior={rutaAnterior} /> </RouteWrapper>}/>
 
             </Routes>

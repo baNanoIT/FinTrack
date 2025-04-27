@@ -17,7 +17,9 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent/>
+          <main>
+            <AppContent />
+          </main>
     </Router>
   );
 }

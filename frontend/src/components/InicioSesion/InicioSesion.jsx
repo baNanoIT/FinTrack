@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaAngleLeft } from 'react-icons/fa';
 import auditoriaLogin from '../../assets/AuditoriaFinancieraLogin.jpg';
 import { motion } from "framer-motion";
-import './InicioSesion.css';
+import '../InicioSesion/InicioSesion.css';
 
 const InicioSesion = () => {
 
@@ -61,6 +61,7 @@ const manejadorInicioSesion = (e) => {
             </button>
 
             <div className="links">
+              {/* Modifique para que ahora si redirija a la pagina de registro correcta */}
               <Link to="/SignUp">¿Todavía no tienes una cuenta? Regístrate</Link><br/>
               <Link to="/ResetPassword">¿Olvidó su contraseña?</Link><br/>
             </div>

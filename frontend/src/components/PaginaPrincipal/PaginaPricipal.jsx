@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { motion } from 'framer-motion';
+//import { motion } from 'framer-motion';
 import { FaChevronRight, FaUserPlus } from 'react-icons/fa';
-import { RiInformation2Fill } from "react-icons/ri";
-import Leon from '../../assets/Leon.jpg';
+//import { RiInformation2Fill } from "react-icons/ri";
+//import Leon from '../../assets/Leon.jpg';
 import logoFintrack from '../../assets/FintrackBlanco.png'
 import './PaginaPrincipal.css';
 
@@ -22,7 +22,7 @@ const PaginaPrincipal = () => {
 
           <div className='grupo-botones'>
             <Link to="/Login" className="boton">Iniciar sesión<FaChevronRight className='icono'/> </Link>
-            <Link to="/SigUp" className="boton">Registrarse<FaUserPlus className='icono'/></Link>
+            <Link to="/SignUp" className="boton">Registrarse<FaUserPlus className='icono'/></Link>
           </div>
           
         </div>
