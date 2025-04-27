@@ -16,7 +16,7 @@ nodemon (opcional)	Reinicia automáticamente el servidor al detectar cambios (mo
 
 **Comando de instalación:**
 ```bash
-npm install express mongoose cors dotenv nodemon
+npm install express mongoose cors dotenv nodemon jsonwebtoken
 ```
 
 ### Frontend
