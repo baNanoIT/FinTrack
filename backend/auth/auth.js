@@ -20,7 +20,7 @@ function verificarToken(token) {
 
 // --------- EJEMPLO DE USO ---------
 
-// Simulamos datos del usuario
+// Guardar infor del usuario
 const datosUsuario = {
   id: 123,
   email: 'usuario@correo.com',
