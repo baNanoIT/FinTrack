@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaAngleLeft } from "react-icons/fa";
-import auditoriaLogin from "../../assets/AuditoriaFinancieraLogin.jpg";
+import RegistroImg from "../../assets/RegistroImagen.avif";
 import "../RegistroUsuario/RegistroUsuario.css";
 import { useState } from "react";
 
@@ -58,7 +58,7 @@ const manejadorRegistro = async (e) => {
     <div className="containerReg">
       <div className="right-panelReg">
         <div className="illustrationReg">
-          <img src={auditoriaLogin} alt="RegistroImg" />
+          <img src={RegistroImg} alt="RegistroImg" />
         </div>
       </div>
 
@@ -154,12 +154,13 @@ const manejadorRegistro = async (e) => {
           <button type="submit" className="Register-button">
             Registrarse
           </button>
+        </form>
 
-          <p className="ya-tienes-cuenta">
+        <p className="ya-tienes-cuenta">
             ¿Ya tienes una cuenta?
             <Link to="/Login"> Inicia sesión</Link>
           </p>
-        </form>
+
       </div>
     </div>
   );
